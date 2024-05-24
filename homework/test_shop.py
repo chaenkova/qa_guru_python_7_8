@@ -92,12 +92,12 @@ class TestCart:
     def test_total_empty_price(self, cart):
         assert cart.get_total_price() == 0
 
-    def test_bye_all(self, not_empty_cart, product, product2):
+    def test_buy_all(self, not_empty_cart, product, product2):
         not_empty_cart.buy()
         assert product.quantity == 998
         assert product2.quantity == 17
         assert not not_empty_cart.products
 
-    def test_by_with_not_enough_goods(self, cart, product):
+    def test_buy_with_not_enough_goods(self, cart, product):
         with pytest.raises(ValueError):
             assert cart.add_product(product, 100000).buy()
